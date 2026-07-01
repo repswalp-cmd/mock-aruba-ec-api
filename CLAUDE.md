@@ -39,7 +39,7 @@ Based on the Aruba EdgeConnect Orchestrator REST API (base path `/gms/rest/`):
 **Auth:** UAI portal credential type is **Username + Password**. UAI POSTs to
 `POST /gms/rest/authentication/login` with `{"user": "...", "password": "..."}` and uses
 the returned `X-Auth-Token` header for subsequent calls. Permissive by default — any username/password pair is accepted unless `ARUBA_EC_TOKEN`
-env var is set. Recommended credentials: username `admin`, password `admin123`.
+env var is set. Recommended credentials: username `lsys-ec-admin`, password `Lum1nary@Aruba#2026`.
 
 ## Key schema details
 

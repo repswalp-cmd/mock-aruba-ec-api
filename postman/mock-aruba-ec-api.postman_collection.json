@@ -54,7 +54,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"user\": \"admin\",\n  \"password\": \"admin123\"\n}"
+              "raw": "{\n  \"user\": \"lsys-ec-admin\",\n  \"password\": \"Lum1nary@Aruba#2026\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/gms/rest/authentication/login",
