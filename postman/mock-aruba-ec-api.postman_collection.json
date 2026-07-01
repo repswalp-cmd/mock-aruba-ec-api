@@ -5,7 +5,7 @@
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
-    { "key": "baseUrl",    "value": "https://PLACEHOLDER.us-east-1.awsapprunner.com" },
+    { "key": "baseUrl",    "value": "https://bbkvcuavhc.us-east-1.awsapprunner.com" },
     { "key": "authToken",  "value": "" },
     { "key": "sampleNePk", "value": "0.NE" }
   ],

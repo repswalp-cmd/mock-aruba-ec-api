@@ -78,4 +78,4 @@ docker tag mock-aruba-ec-build 905418046272.dkr.ecr.us-east-1.amazonaws.com/mock
 docker push 905418046272.dkr.ecr.us-east-1.amazonaws.com/mock-aruba-ec-api:latest
 ```
 
-App Runner uses `AutoDeploymentsEnabled=True`. Service URL: (set after first deploy)
+App Runner uses `AutoDeploymentsEnabled=True`. Service URL: `https://bbkvcuavhc.us-east-1.awsapprunner.com`
