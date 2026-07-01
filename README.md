@@ -44,8 +44,9 @@ curl -X POST "$BASE/gms/rest/authentication/login" \
 curl -H "X-Auth-Token: <token>" "$BASE/gms/rest/appliance"
 ```
 
-The mock is **permissive by default** — any credentials are accepted unless `ARUBA_EC_TOKEN`
-env var is set. In the UAI portal, set the Base URL to the App Runner URL.
+The mock is **permissive by default** — any username/password pair is accepted.
+In the UAI portal, configure the connector with credential type **Username + Password**
+and set the Base URL to the App Runner URL. Enter any placeholder values for the credentials.
 
 ## Data
 
