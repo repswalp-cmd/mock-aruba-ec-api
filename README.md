@@ -45,8 +45,10 @@ curl -H "X-Auth-Token: <token>" "$BASE/gms/rest/appliance"
 ```
 
 The mock is **permissive by default** — any username/password pair is accepted.
-In the UAI portal, configure the connector with credential type **Username + Password**
-and set the Base URL to the App Runner URL. Use `lsys-ec-admin` / `Lum1nary@Aruba#2026` as credentials.
+In the UAI portal, configure the connector with:
+- **Username:** `lsys-ec-admin`
+- **Password:** `Lum1nary@Aruba#2026`
+- **Orchestrator URL:** `https://bbkvcuavhc.us-east-1.awsapprunner.com`
 
 ## Data
 

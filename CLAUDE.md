@@ -36,10 +36,12 @@ Based on the Aruba EdgeConnect Orchestrator REST API (base path `/gms/rest/`):
 | `GET /` | Health check |
 | `GET /debug/requests` | Last 50 request log |
 
-**Auth:** UAI portal credential type is **Username + Password**. UAI POSTs to
-`POST /gms/rest/authentication/login` with `{"user": "...", "password": "..."}` and uses
-the returned `X-Auth-Token` header for subsequent calls. Permissive by default — any username/password pair is accepted unless `ARUBA_EC_TOKEN`
-env var is set. Recommended credentials: username `lsys-ec-admin`, password `Lum1nary@Aruba#2026`.
+**Auth:** UAI portal fields: **Username**, **Password**, **Orchestrator URL**.
+UAI POSTs `{"user": "...", "password": "..."}` to `/gms/rest/authentication/login` and
+uses the returned `X-Auth-Token` for subsequent calls. Permissive — any credentials accepted.
+- Username: `lsys-ec-admin`
+- Password: `Lum1nary@Aruba#2026`
+- Orchestrator URL: `https://bbkvcuavhc.us-east-1.awsapprunner.com`
 
 ## Key schema details
 
