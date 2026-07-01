@@ -1,0 +1,188 @@
+{
+  "info": {
+    "name": "Mock Aruba EdgeConnect Orchestrator API — Luminary Systems",
+    "description": "Mock Aruba EdgeConnect Orchestrator REST API serving 18 SD-WAN appliances across 6 sites.\n\nBase path: /gms/rest/\nAuth: POST /gms/rest/authentication/login → X-Auth-Token header\n\nSites:\n  AMS: 6 appliances (hub)\n  SFO: 6 appliances (hub)\n  NYC: 2 appliances (spoke)\n  BLR: 2 appliances (spoke)\n  LON: 1 appliance  (spoke)\n  SGP: 1 appliance  (spoke)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl",    "value": "https://PLACEHOLDER.us-east-1.awsapprunner.com" },
+    { "key": "authToken",  "value": "" },
+    { "key": "sampleNePk", "value": "0.NE" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/", "host": ["{{baseUrl}}"], "path": [""] }
+          }
+        },
+        {
+          "name": "Debug Requests",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/debug/requests", "host": ["{{baseUrl}}"], "path": ["debug","requests"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.token) { pm.collectionVariables.set('authToken', json.token); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/authentication/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","authentication","login"]
+            }
+          }
+        },
+        {
+          "name": "Login Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/authentication/loginStatus",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","authentication","loginStatus"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/authentication/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","authentication","logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appliance Inventory",
+      "item": [
+        {
+          "name": "Get All Appliances",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/appliance",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","appliance"]
+            }
+          }
+        },
+        {
+          "name": "Get Single Appliance (by nePk)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/appliance?nePk={{sampleNePk}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","appliance"],
+              "query": [{ "key": "nePk", "value": "{{sampleNePk}}" }]
+            }
+          }
+        },
+        {
+          "name": "Get Approved Appliances",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/appliance/approved",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","appliance","approved"]
+            }
+          }
+        },
+        {
+          "name": "Get Network Role and Site",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/appliance/networkRoleAndSite",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","appliance","networkRoleAndSite"]
+            }
+          }
+        },
+        {
+          "name": "Get Software Versions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/appliancesSoftwareVersions",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","appliancesSoftwareVersions"]
+            }
+          }
+        },
+        {
+          "name": "Get Extra Info",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/appliance/extraInfo",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","appliance","extraInfo"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "Get Groups",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "X-Auth-Token", "value": "{{authToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/gms/rest/group",
+              "host": ["{{baseUrl}}"],
+              "path": ["gms","rest","group"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
