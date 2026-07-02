@@ -100,13 +100,18 @@ def login():
     token = f"mock-token-{user}-2026"
     _VALID_TOKENS.add(token)
     session["authenticated"] = True
-    return jsonify({
+    now = datetime.now(timezone.utc)
+    expiry = now.replace(year=now.year + 1).strftime("%Y-%m-%dT%H:%M:%SZ")
+    resp = jsonify({
+        "value":    token,   # field the UAI connector looks for
         "token":    token,
-        "expiry":   "2026-07-01T23:59:59Z",
+        "expiry":   expiry,
         "role":     "admin",
         "userId":   1,
         "userName": user,
     })
+    resp.headers["X-Auth-Token"] = token
+    return resp
 
 @app.get("/gms/rest/authentication/loginStatus")
 def login_status():
