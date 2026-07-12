@@ -32,6 +32,7 @@ Based on the Aruba EdgeConnect Orchestrator REST API (base path `/gms/rest/`):
 | `GET /gms/rest/appliance/networkRoleAndSite` | Hub/spoke role + site per appliance |
 | `GET /gms/rest/appliancesSoftwareVersions` | Software version per appliance |
 | `GET /gms/rest/appliance/extraInfo` | Suricata/signature version |
+| `GET /gms/rest/interfaceState` | Per-appliance interface state via `?nePk=0.NE&cached=true` |
 | `GET /gms/rest/group` | Orchestrator groups (stub) |
 | `GET /` | Health check |
 | `GET /debug/requests` | Last 50 request log |
